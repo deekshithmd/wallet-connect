@@ -28,12 +28,9 @@ const App = () => {
   const getBalance = async (address) => {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-      // const signer = provider.getSigner();
-      // const address = await signer.getAddress();
-
       const balance = await provider.getBalance(address);
-      setBalance(ethers.utils.formatEther(balance));
+      const balanceInEth = ethers.utils.formatEther(balance);
+      setBalance(balanceInEth);
     }
     catch (e) {
       console.log('Error while fetching balance')
@@ -44,7 +41,7 @@ const App = () => {
     <div className='App'>
       <h1>Wallet Balance</h1>
       <button onClick={() => getBalance(address)}>get balance</button>
-      <p>Your MetaMask balance: {balance} ETH</p>
+      <p>Your allet balance: {balance} ETH</p>
     </div>
   );
 };
